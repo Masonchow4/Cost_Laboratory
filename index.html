@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="description" content="Swyft interactive pricing and cost laboratory. Explore assumptions, unit economics, break-even, competitors and pricing risks.">
+  <title>Swyft | Pricing &amp; Cost Laboratory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Swyft laboratory home"><span class="brand-mark">S</span><span><b>SWYFT</b><small>PRICING LAB</small></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav aria-label="Laboratory sections">
+        <a class="nav-link active" href="#overview"><span>◈</span>Overview</a>
+        <a class="nav-link" href="#costs"><span>▦</span>Cost structure</a>
+        <a class="nav-link" href="#products"><span>◫</span>Products &amp; pricing</a>
+        <a class="nav-link" href="#break-even"><span>⌁</span>Break-even</a>
+        <a class="nav-link" href="#scenarios"><span>◌</span>Scenarios</a>
+        <a class="nav-link" href="#competition"><span>◎</span>Competition</a>
+        <a class="nav-link" href="#review"><span>✳</span>Decision review</a>
+      </nav>
+      <div class="sidebar-note"><span class="pulse"></span><div><b>Scenario model</b><small>Student assumptions · editable</small></div></div>
+      <div class="sidebar-bottom"><div class="avatar">MC</div><div><b>Mason Chowaniec</b><small>Private browser workspace</small></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="crumb">Workspaces <span>/</span> Pricing laboratory <span>/</span> Swyft</div><div class="top-actions"><span class="snapshot"><i></i>RESEARCH SNAPSHOT &nbsp; OCT 27, 2026</span><button class="button ghost small" id="backup-button">Export backup</button><label class="button ghost small import-label" for="backup-file">Import backup</label><input id="backup-file" type="file" accept="application/json,.json" hidden></div></header>
+      <section id="overview" class="section hero-section">
+        <div class="eyebrow">INTERACTIVE FINANCIAL INTELLIGENCE · MISSION 3</div>
+        <div class="hero-grid">
+          <div><h1>Price with the<br><span>whole model</span> in view.</h1><p class="hero-copy">A decision lab for Swyft. Change cost assumptions, test prices, and see the impact on unit economics, break-even, and competitive position.</p><div class="hero-actions"><a class="button primary" href="#costs">Explore the cost model <b>↘</b></a><a class="text-link" href="#review">How risk is evaluated <span>↗</span></a></div></div>
+          <aside class="hero-range"><div class="hero-range-head"><span>MISSION 1 PRELIMINARY RANGE</span><span class="tag purple">CONSUMER SCENARIO</span></div><strong>$4.99–$7.99</strong><div class="range-unit">per month <span>·</span> $29.99–$39.99 annual alternative</div><div class="range-foot"><span class="pulse"></span> A starting hypothesis, not an optimal price</div></aside>
+        </div>
+        <div class="assumption-strip"><span class="assumption-icon">i</span><p><b>What we know:</b> Swyft proposes AI clothing previews and personalized advice for online shopping. <b>What remains open:</b> who pays, actual usage costs, retailer integration, customer willingness to pay, and fit quality. The model below treats consumer subscription pricing as a scenario.</p></div>
+        <div class="kpi-grid" id="overview-kpis"></div>
+      </section>
+      <section id="costs" class="section">
+        <div class="section-heading"><div><div class="eyebrow">01 / COST STRUCTURE</div><h2>Every cost has a place.</h2><p>Adjust the operating case, inspect evidence, and see each expense flow into the model.</p></div><div class="heading-tools"><label for="scenario-select">Operating case</label><select id="scenario-select" aria-label="Operating case"><option value="lean">Lean startup</option><option value="typical" selected>Typical operation</option><option value="expansion">Expansion</option></select><button id="add-expense" class="button secondary">＋ Add expense</button><button id="reset-costs" class="button ghost small">Restore suggested values</button></div></div>
+        <div class="cost-summary-grid" id="cost-summary"></div>
+        <div class="cost-groups"><div class="group-head"><div><h3>Recurring operating costs</h3><p>Monthly equivalents. Variable expenses are applied to the products or customers assigned below.</p></div><span class="count-pill" id="opex-count"></span></div><div id="opex-list" class="expense-list"></div></div>
+        <div class="cost-groups startup-group"><div class="group-head"><div><h3>Startup cash requirements</h3><p>One-time costs stay outside monthly break-even unless you explicitly add an amortization assumption.</p></div><span class="count-pill" id="startup-count"></span></div><div id="startup-list" class="expense-list"></div></div>
+        <div class="method-note"><b>Cost evidence:</b> Researched prices link to published sources; estimates show the calculation and the assumption behind it; illustrative values are teaching placeholders. None of these are supplier quotes for Swyft.</div>
+      </section>
+      <section id="products" class="section">
+        <div class="section-heading"><div><div class="eyebrow">02 / PRODUCTS &amp; PRICING</div><h2>Set the offer you want to test.</h2><p>One hypothetical consumer subscription is preloaded from the Mission 1 scenario. Add other plans only when you want to model them.</p></div><button id="add-product" class="button secondary">＋ Add product or plan</button></div>
+        <div id="product-list" class="product-list"></div>
+        <div class="tip-row"><span>ⓘ</span><p>Sales volume means average active paying customers (or equivalent units) in a month. Annual prices are divided by 12 for operating analysis; payment timing, churn, taxes, refunds, and renewals are not forecast.</p></div>
+      </section>
+      <section id="break-even" class="section">
+        <div class="section-heading"><div><div class="eyebrow">03 / UNIT ECONOMICS &amp; BREAK-EVEN</div><h2>How many customers cover the model?</h2><p>Monthly operating view using your current price, product mix, and active expense assumptions.</p></div><div class="period-tag">USD · MONTHLY EQUIVALENT</div></div>
+        <div class="metric-grid" id="financial-metrics"></div>
+        <div class="chart-grid">
+          <article class="panel chart-panel"><div class="panel-head"><div><h3>Break-even curve</h3><p>Revenue and total monthly cost by active customer count</p></div><label class="compact-control">Show to <input id="chart-range" type="number" min="10" max="10000" step="10" value="500" aria-label="Break-even chart quantity range"><span>customers</span></label></div><div id="breakeven-chart" class="chart-area" role="img" aria-label="Break-even revenue and total cost chart"></div><div id="breakeven-legend" class="chart-legend"></div></article>
+          <article class="panel chart-panel"><div class="panel-head"><div><h3>Where costs sit</h3><p>Enabled monthly costs, grouped by category</p></div><span class="panel-kicker">OPERATING ONLY</span></div><div id="cost-chart" class="cost-chart"></div></article>
+          <article class="panel chart-panel"><div class="panel-head"><div><h3>Price &amp; profit sensitivity</h3><p>Expected units held constant to isolate price changes</p></div><span class="panel-kicker">WHAT-IF · NOT DEMAND</span></div><div id="sensitivity-chart" class="chart-area compact-chart" role="img" aria-label="Operating profit sensitivity to price"></div></article>
+          <article class="panel chart-panel"><div class="panel-head"><div><h3>Product contribution</h3><p>Unit economics at the current student sales mix</p></div></div><div id="product-comparison" class="product-comparison"></div></article>
+        </div>
+        <div class="caveat-bar"><b>Read the model carefully.</b> Break-even is an accounting run-rate estimate under constant costs and the current sales mix. It does not model acquisition, churn, capacity, seasonality, taxes, or changing demand.</div>
+      </section>
+      <section id="scenarios" class="section">
+        <div class="section-heading"><div><div class="eyebrow">04 / OPERATING SCENARIOS</div><h2>Try three ways to run the business.</h2><p>Each case is an editable assumption set. Higher spend does not imply higher demand.</p></div><button id="save-scenario" class="button secondary">＋ Save current as custom</button></div>
+        <div class="scenario-grid" id="scenario-cards"></div><div class="table-wrap"><table class="data-table" id="scenario-table"></table></div>
+      </section>
+      <section id="competition" class="section">
+        <div class="section-heading"><div><div class="eyebrow">05 / COMPETITIVE POSITION</div><h2>Compare price and financial viability.</h2><p>Observed consumer offers from Mission 1, checked Oct 27, 2026. These are dated listings, not live quotes.</p></div><span class="tag amber">PRICE ≠ WILLINGNESS TO PAY</span></div>
+        <div class="competition-grid"><article class="panel competitor-panel"><div class="panel-head"><div><h3>Representative alternatives</h3><p>Annual access converted to monthly equivalent, plus Whering's free core</p></div><span class="panel-kicker">4 ALTERNATIVES</span></div><div id="competitor-list"></div></article><article class="panel position-panel"><div class="panel-head"><div><h3>Selected plan position</h3><p>Against the paid annual entry cohort median and Mission 1 range</p></div></div><div id="price-position"></div><p class="source-note">The annual cohort covers three entry annual listings ($27.99–$29.99); features and usage are not equivalent. <a href="https://masonchow4.github.io/Pricing_Dashboard/#sources" target="_blank" rel="noreferrer">Open Mission 2 source register ↗</a></p></article></div>
+      </section>
+      <section id="review" class="section review-section">
+        <div class="review-intro"><div class="eyebrow">06 / PRICING DECISION REVIEW</div><h2>Make the risks explainable.</h2><p>The review applies explicit rules to your current inputs. It does not predict business failure or infer demand.</p></div>
+        <div class="review-state" id="evaluation-state"></div><div id="evaluation-results" class="evaluation-results"></div>
+        <div class="review-actions"><button id="evaluate-button" class="button primary large">Evaluate my pricing decision <b>→</b></button><button id="revise-button" class="button secondary" hidden>Revise my pricing</button><button id="confirm-button" class="button confirm" hidden>Confirm my pricing decision</button></div>
+        <div id="confirmation-panel" class="confirmation-panel" hidden><div class="confirmation-head"><div><div class="eyebrow">STUDENT DECISION REQUIRED</div><h3>Explain the price you chose.</h3><p>The app will record your decision only after you submit it here. Codex will not confirm a price for you.</p></div></div><label for="justification">Why have you selected this price, and how do you justify it based on costs, competitors, and Swyft's value proposition?</label><textarea id="justification" rows="4" maxlength="1200" placeholder="Write your reasoning in your own words…"></textarea><label id="warning-ack-wrap" class="checkbox-row" hidden><input id="warning-ack" type="checkbox"><span>I reviewed the major warnings shown in the evaluation.</span></label><button id="finalize-button" class="button confirm large">Confirm this decision snapshot</button></div>
+        <div id="report-panel" class="report-panel" hidden><div><span class="success-mark">✓</span><div><h3>Decision snapshot confirmed</h3><p>Downloads are generated from this exact snapshot. Any input change invalidates it and requires a fresh evaluation and confirmation.</p></div></div><div class="report-actions"><button id="download-docx" class="button primary">Download Pricing Decision Report (.docx)</button><button id="download-json" class="button secondary">Download Pricing Decision Data (.json)</button></div></div>
+        <div class="persistence-note">Your working model is saved in this browser's local storage. Export a backup before clearing browser data or moving to another device.</div>
+      </section>
+      <footer class="footer"><span>SWYFT PRICING LABORATORY</span><span>Research snapshot: Oct 27, 2026 · Cost assumptions remain editable</span><span>Built for exploration, not financial advice</span></footer>
+    </main>
+  </div>
+  <dialog id="expense-dialog" class="modal"><form id="expense-form" method="dialog"><div class="modal-head"><div><span class="eyebrow">CUSTOM MODEL INPUT</span><h2>Add an expense</h2></div><button class="icon-button" value="cancel" aria-label="Close">×</button></div><div class="form-grid"><label>Expense name<input name="name" required maxlength="80" placeholder="e.g. Customer support" /></label><label>Category<select name="category"><option>People</option><option>AI &amp; cloud</option><option>Marketing</option><option>Technology</option><option>Administration</option><option>Legal &amp; privacy</option><option>Other</option></select></label><label>Description<textarea name="description" rows="2" required></textarea></label><label>Amount in USD<input name="amount" type="number" min="0" step="0.01" value="0" required></label><label>Classification<select name="classification"><option value="fixed">Fixed</option><option value="perUnit">Variable per active customer / unit</option><option value="percentRevenue">Variable % of revenue</option><option value="perTransaction">Per transaction</option></select></label><label>Period<select name="period"><option value="monthly">Monthly</option><option value="annual">Annual</option><option value="weekly">Weekly</option><option value="quarterly">Quarterly</option><option value="oneTime">One-time startup</option><option value="perUnit">Per unit</option><option value="perTransaction">Per transaction</option></select></label><label>Evidence<select name="evidence"><option>Student-Entered</option><option>Illustrative</option><option>Estimated</option><option>Researched</option></select></label><label>Source URL (optional)<input name="sourceUrl" type="url" placeholder="https://…"></label><label class="span-2">Assumption / benchmark meaning<textarea name="assumptions" rows="2"></textarea></label><label>Business allocation<select id="expense-allocation" name="allocation"><option value="business">Shared business overhead</option></select></label></div><div class="modal-actions"><button class="button secondary" value="cancel">Cancel</button><button id="create-expense" class="button primary" value="default">Add expense</button></div></form></dialog>
+  <dialog id="product-dialog" class="modal"><form id="product-form" method="dialog"><div class="modal-head"><div><span class="eyebrow">STUDENT SCENARIO</span><h2>Add a product or plan</h2></div><button class="icon-button" value="cancel" aria-label="Close">×</button></div><div class="form-grid"><label>Product / plan name<input name="name" required maxlength="80" placeholder="e.g. Swyft Annual" /></label><label>Billing model<select name="billing"><option value="monthly">Monthly subscription</option><option value="annual">Annual subscription</option><option value="oneTime">One-time purchase</option><option value="service">Service fee / per unit</option></select></label><label class="span-2">Description<textarea name="description" rows="2" required placeholder="What does this plan provide?"></textarea></label><label>Price (USD per billing period)<input name="price" type="number" min="0" step="0.01" value="4.99" required></label><label>Expected active customers / units per month<input name="volume" type="number" min="0" step="1" value="25" required></label><label>Base variable cost per customer / unit<input name="variableCost" type="number" min="0" step="0.01" value="0" required></label><label>AI previews per customer / month<input name="renders" type="number" min="0" step="1" value="10" required></label><label class="span-2">Included features<textarea name="features" rows="2" placeholder="Separate features with commas"></textarea></label><label class="span-2">Optional add-ons<textarea name="addons" rows="2" placeholder="Separate add-ons with commas"></textarea></label></div><div class="modal-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button primary" value="default">Add student scenario</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
